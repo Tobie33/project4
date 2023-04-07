@@ -9,3 +9,68 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(16)
+  email      String
+  createdAt  DateTime
+  lastOnline DateTime
+  image      String
+  orders     Order[]
+  comments   Comment[]
+}
+
+model Product {
+  id                 Int       @id @default(autoincrement())
+  origin             Origin    @relation(fields: [originId], references: [id])
+  originId           Int
+  name               String
+  company            Company   @relation(fields: [companyId], references: [id])
+  companyId          Int
+  productDescription String
+  price              Float
+  comments           Comment[]
+  images             Image[]
+  Order              Order?    @relation(fields: [orderId], references: [id])
+  orderId            Int?
+}
+
+model Origin {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(16)
+  Product Product[]
+}
+
+model Company {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(16)
+  Product Product[]
+}
+
+model Order {
+  id           Int       @id @default(autoincrement())
+  products     Product[]
+  quantity     Int
+  productPrice Float
+  createdAt    DateTime
+  user         User      @relation(fields: [userId], references: [id])
+  userId       Int
+  delivered    Boolean
+}
+
+model Comment {
+  id        Int     @id @default(autoincrement())
+  message   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model Image {
+  id            Int      @id @default(autoincrement())
+  productString String
+  product       Product? @relation(fields: [productId], references: [id])
+  productId     Int?
+}
