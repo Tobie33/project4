@@ -50,27 +50,16 @@ model Session {
 }
 
 model Product {
-  id                 Int            @id @default(autoincrement())
-  origin             Origin         @relation(fields: [originId], references: [id])
+  id                 Int       @id @default(autoincrement())
+  origin             Origin    @relation(fields: [originId], references: [id])
   originId           Int
   name               String
-  company            Company        @relation(fields: [companyId], references: [id])
+  company            Company   @relation(fields: [companyId], references: [id])
   companyId          Int
   productDescription String
   price              Float
   comments           Comment[]
   images             Image[]
-  ShoppingCart       ShoppingCart[]
-}
-
-model ShoppingCart {
-  id        Int     @id @default(autoincrement())
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-  quantity  Int
-  price     Float
-  order     Order   @relation(fields: [orderId], references: [id])
-  orderId   Int
 }
 
 model Origin {
@@ -86,12 +75,11 @@ model Company {
 }
 
 model Order {
-  id           Int            @id @default(autoincrement())
-  createdAt    DateTime       @default(now())
-  user         User           @relation(fields: [userId], references: [id])
-  userId       String
-  delivered    Boolean        @default(false)
-  ShoppingCart ShoppingCart[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  delivered Boolean  @default(false)
 }
 
 model Comment {

@@ -1,2 +1,28 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-toastify/dist/ReactToastify.css";
+
+* {
+  font-family: "Palatino";
+  font-size: 20px;
+  font-style: bold;
+  body{
+    #__next{
+      #pages{
+        #image-displays{
+          max-height:1000px;
+          .carousel-inner{
+            .carousel-item{
+              img{
+                max-height: 1000px;
+              }
+            }
+          }
+        }
+        .footer{
+          min-height:300px;
+
+        }
+      }
+    }
+  }
+}
