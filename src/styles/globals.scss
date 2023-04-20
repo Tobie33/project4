@@ -1,26 +1,38 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-toastify/dist/ReactToastify.css";
+@import './mainPage.scss';
+@import './profile.scss';
+@import './footer.scss';
+@import './about.scss';
 
 * {
   font-family: "Palatino";
   font-size: 20px;
   font-style: bold;
   body{
+    min-height:100vh;
     #__next{
+      min-height: 100vh;
       #pages{
-        #image-displays{
-          max-height:1000px;
-          .carousel-inner{
-            .carousel-item{
-              img{
-                max-height: 1000px;
-              }
-            }
+        #inside-navs{
+          background-color:grey
+        }
+        #navbar{
+          max-height:10vh;
+          #icon{
+            max-height: 100px;
+            max-width:100px;
           }
         }
-        .footer{
-          min-height:300px;
-
+        #content{
+          min-height:80vh;
+          a{
+            color:white;
+          }
+        }
+        #footer{
+          min-height: 10vh;
+          background-color: beige;
         }
       }
     }

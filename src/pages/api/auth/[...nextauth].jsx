@@ -20,6 +20,10 @@ export const authOptions = ({
   callbacks: {
     async session({ session, user }) {
       session.user.id = user.id // eslint-disable-line
+      session.user.orders = await prisma.order.findMany({ // eslint-disable-line
+        where: { userId: user.id }
+      })
+
       return session
     }
   }

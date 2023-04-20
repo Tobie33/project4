@@ -4,7 +4,12 @@ import prisma from '@/controllers/_helpers/prisma'
 
 const ProductIndex = async (req, res) => {
   try {
-    const foundProducts = await prisma.product.findMany({})
+    const foundProducts = await prisma.product.findMany({
+      include: {
+        company: true,
+        origin: true
+      }
+    })
     return res.status(200).json(foundProducts)
   } catch (err) {
     return handleErrors(res, err)

@@ -14,7 +14,7 @@ export default function CompsLayoutsNavbar() {
         <Navbar.Collapse id="pages-nav">
           <Nav className="flex-grow-1 justify-content-around">
             <Nav.Link href="/about">Store</Nav.Link>
-            <Nav.Link href="#">Products</Nav.Link>
+            <Nav.Link href="/products">Products</Nav.Link>
             <Navbar.Brand as={Link} href="/" className="navbar-brand">
               Tara
             </Navbar.Brand>

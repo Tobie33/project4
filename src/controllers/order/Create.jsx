@@ -7,7 +7,10 @@ const OrderCreate = async (req, res) => {
     const { body: { userId } } = req
     const newOrder = await prisma.order.create({
       data: {
-        userId: Number(userId)
+        userId
+      },
+      include: {
+        products: true
       }
     })
     return res.status(201).json(newOrder)

@@ -7,30 +7,32 @@ import Footer from '@/components/_Footer'
 
 import appWithSession from '@/hoc/appWithSession'
 
-const EmptyLayout = ({ children }) => <>{children}</>
+const EmptyLayout = ({ children }) => <>{children}</> // eslint-disable-line
 
 function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || EmptyLayout
   return (
     <div id="pages" className="d-flex flex-column">
       <CompsLayoutsNavbar />
-      <Layout>
-        <SessionProvider>
-          <Component {...pageProps} />
-          <ToastContainer
-            position="bottom-left"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </SessionProvider>
-        <Footer />
-      </Layout>
+      <div id="content">
+        <Layout>
+          <SessionProvider>
+            <Component {...pageProps} />
+            <ToastContainer
+              position="bottom-left"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          </SessionProvider>
+        </Layout>
+      </div>
+      <Footer />
     </div>
   )
 }

@@ -60,6 +60,7 @@ model Product {
   price              Float
   comments           Comment[]
   images             Image[]
+  orders             Order[]
 }
 
 model Origin {
@@ -75,11 +76,12 @@ model Company {
 }
 
 model Order {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
   userId    String
-  delivered Boolean  @default(false)
+  delivered Boolean   @default(false)
+  products  Product[]
 }
 
 model Comment {

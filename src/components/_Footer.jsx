@@ -1,7 +1,10 @@
+import brand from 'public/images/brand.png'
+import Image from 'next/image'
+
 const Footer = () => (
-  <div className="d-flex flex-grow-4 footer align-items-center justify-content-around m-5">
+  <div id="footer" className="d-flex align-items-center justify-content-around p-5">
     <div className="">
-      <h6>More About us</h6>
+      <h4>More About us</h4>
       <ul className="mt-2">
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/about">Store</a>
@@ -14,9 +17,7 @@ const Footer = () => (
         </li>
       </ul>
     </div>
-    <div className="">Gonna be Images</div>
-    <div className="">Some other stuff</div>
-
+    <div className=""><Image src={brand} alt="First slide" /></div>
   </div>
 )
 
